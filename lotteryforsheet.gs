@@ -1,9 +1,3 @@
-//參考資料：https://yamm.com/blog/create-filters-in-google-sheets-with-google-apps-script/
-//記得要先移除篩選器，不然程式無法執行。
-//https://developers.google.com/google-ads/scripts/docs/features/dates
-//https://kenson.org/fetch-google-sheets-data-as-json-using-apps-script/
-//sheet to json http://blog.katrina.tw/2018/08/apps-script-http-json.html
-
 function onOpen(e) {
   let cache = CacheService.getScriptCache(); //利用cache暫存變數
   cache.put('ltime',null);
