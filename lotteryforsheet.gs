@@ -19,10 +19,8 @@ function toLottery(){
   let cache = CacheService.getScriptCache(); //利用cache暫存變數
   let num=0; //用來紀錄要抽出多少得獎人數
   let item_range = sheet.getRange('1:1').getValues(); //'1:1'指的是第一列，標題列
-  let key_range = sheet.getRange('A2:A').getValues(); //第A欄扣除標列的範圍
 
   let items = []; //儲存標題用
-  let keys = []; //這裡的作用只是用來儲存有幾筆資料列
     
   for (let idx in item_range[0]) {
     //確認有幾個欄位，一直數到沒有標題就跳出 
@@ -31,20 +29,12 @@ function toLottery(){
     }
     items.push(item_range[0][idx]); //將標題紀錄下來
   }
-    
-  for (let idx in key_range) { 
-    // 確認有幾筆資料列
-    if (key_range[idx] == '') { 
-      break;
-    }
-    keys.push(key_range[idx]);
-  }
-    
-  // 共有幾筆資料
-  let row_number = keys.length; 
+  //共有幾筆資料 
+  let row_number=sheet.getLastRow();
   
   // 共有幾個欄位
-  let column_number = items.length; 
+  let column_number = items.length;
+ 
   //將資料的範圍存到cache中，之後可以取用。
   cache.put('row_number',row_number);
   cache.put('column_number',column_number);
